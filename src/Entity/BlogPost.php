@@ -2,12 +2,13 @@
 
 namespace App\Entity;
 
+use App\ORM\TenantAwareInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\GeneratedValue;
 use JsonSerializable;
 
 #[ORM\Entity]
-final class BlogPost implements JsonSerializable
+final class BlogPost implements JsonSerializable, TenantAwareInterface
 {
   #[ORM\Id]
   #[ORM\Column]
