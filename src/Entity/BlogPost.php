@@ -1,0 +1,30 @@
+<?php
+
+namespace App\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\GeneratedValue;
+use JsonSerializable;
+
+#[ORM\Entity]
+final class BlogPost implements JsonSerializable
+{
+  #[ORM\Id]
+  #[ORM\Column]
+  #[GeneratedValue()]
+  private int $id;
+
+  #[ORM\Column]
+  private int $tenantId;
+
+  #[ORM\Column]
+  private string $title;
+
+  public function jsonSerialize(): mixed
+  {
+    return [
+      'id' => $this->id,
+      'title' => $this->title,
+    ];
+  }
+}
