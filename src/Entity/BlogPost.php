@@ -10,13 +10,12 @@ use JsonSerializable;
 #[ORM\Entity]
 final class BlogPost implements JsonSerializable, TenantAwareInterface
 {
+  use TenantAware;
+
   #[ORM\Id]
   #[ORM\Column]
   #[GeneratedValue()]
   private int $id;
-
-  #[ORM\Column]
-  private int $tenantId;
 
   #[ORM\Column]
   private string $title;

@@ -15,9 +15,4 @@ final class BlogPostRepository extends ServiceEntityRepository
   {
     parent::__construct($registry, BlogPost::class);
   }
-
-  public function findAll(): array
-  {
-    return $this->createQueryBuilder('b')->getQuery()->execute();
-  }
 }
