@@ -11,10 +11,19 @@ services:
       - database_data:/var/lib/postgresql/data:rw
 
   php:
-    build: .
+    build:
+      context: ./docker/php
     working_dir: /app
     volumes:
       - '.:/app'
+
+  keycloak:
+    image: 'bitnami/keycloak:23'
+    environment:
+      KEYCLOAK_CREATE_ADMIN_USER: true
+      KEYCLOAK_ADMIN_USER: admin
+      KEYCLOAK_ADMIN_PASSWORD: password
+      KEYCLOAK_DATABASE_VENDOR: dev-file
 
 volumes:
   database_data:

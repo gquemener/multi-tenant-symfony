@@ -1,0 +1,17 @@
+security:
+    providers:
+        users_in_memory:
+            memory:
+                users:
+                    admin: { roles: ['ROLE_ADMIN'] }
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            stateless: true
+            access_token:
+                token_handler: 'App\Security\AccessTokenHandler'
+
+    access_control:
+        - { path: ^/blog-posts, roles: IS_AUTHENTICATED_FULLY }
