@@ -6,7 +6,3 @@ services:
   php:
     ports:
       - "8085:8080"
-
-  keycloak:
-    ports:
-      - "8086:8080"
